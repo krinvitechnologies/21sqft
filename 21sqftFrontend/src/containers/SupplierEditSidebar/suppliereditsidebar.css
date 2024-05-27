@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.sep-modal {
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.sep-modal-form-field {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.sep-modal-form-field label {
+    display: flex;
+    flex-direction: column;
+    color: #2B2A29;
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    width: 100%;
+}
+
+.sep-modal-form-field input {
+    border-radius: 30px;
+    border: 1px solid #2B2A29;
+    background: #FFF;
+    color: #ACACAC;
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    outline: none;
+    height: 45px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.sep-modal-form-field textarea {
+    border-radius: 20px;
+    border: 1px solid #2B2A29;
+    background: #FFF;
+    color: #ACACAC;
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    outline: none;
+    height: 80px;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+.sep-modal-save-btn {
+    font-size: 1rem;
+    background-color: #FECC00;
+    color: #2B2A29;
+    font-family: Roboto;
+    font-weight: 400;
+    width: 100%;
+    height: 45px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: none;
+    margin-top: 16px;
+}
+
+.sep-modal-save-btn:hover {
+    opacity: 0.7;
+}
+
+.uploadimg {
+    margin-top: 5px;
+}
+
+.dotted-box {
+    width: 100%;
+    height: auto;
+    border: 1px dashed rgba(43, 42, 41, 1);
+    border-radius: 5px;
+
+}
+
+.dotted-box p {
+    font-size: 12px;
+}
+
+.box1 div {
+    width: 40xp;
+    height: 0px;
+    background: gray;
+
+}
+
+
+.drag .fa-solid {
+    position: relative;
+    left: 39%;
+}
+
+.upload-label p {
+    margin-left: 29%;
+    font-weight: 700;
+}
+
+
+.contain {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    /* border: 1px solid green; */
+    text-align: center;
+    background: red;
+    color: FFFFFF;
+    font-family: Roboto;
+    font-size: 8px;
+    position: relative;
+    left: 80%;
+    top: 7px;
+    cursor: pointer;
+}
+
+.load {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boximg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#boxes {
+    /* position: relative; */
+    height: 30px;
+    width: 30px;
+    background: gray;
+    border-radius: 5px;
+
+}
+
+.wii1 {
+    height: 30px;
+    width: 30px;
+
+}
+
+.bo1 {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+
+@media screen and (max-width:568px) {
+
+    .sep-modal-form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+}

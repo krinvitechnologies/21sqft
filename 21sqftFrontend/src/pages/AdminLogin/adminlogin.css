@@ -1,0 +1,148 @@
+.admin-login {
+    /* background: #00000075; */
+    width: 100vw;
+    height: 100vh;
+    /* padding-top: 150px; */
+    box-sizing: border-box;
+}
+
+.admin-login-container {
+    height: 100%;
+    width: 100%;
+    /* border-radius: 55px 55px 0px 0px; */
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    background: #FFFFFF;
+}
+
+.right-admin-login {
+    width: 50%;
+    /* height: 100%; */
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.right-admin-login img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.left-admin-login {
+    width: 50%;
+    /* max-width: 500px; */
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-login-form {
+    width: 100%;
+    max-width: 500px;
+}
+
+.left-admin-login h1 {
+    font-family: Roboto;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 34px;
+    text-align: left;
+    color: #101010;
+    margin: 0;
+}
+
+.left-admin-login h5 {
+    font-family: Roboto;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: left;
+    color: #3D3D3D;
+}
+
+.ad-l-item {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+
+}
+
+.ad-l-item span {
+    font-family: Roboto;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 34px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #212429;
+
+}
+
+.ad-l-item input {
+    border-radius: 10px;
+    border: 1px solid #ACB5BD;
+    height: 45px;
+    font-size: 1rem;
+    padding: 0 10px;
+    box-sizing: border-box;
+    outline: none;
+    color: #212429;
+    font-family: 'Roboto';
+}
+
+.ad-l-item button {
+    height: 50px;
+    background: #011135;
+    border-radius: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+}
+
+.ad-l-item button:hover {
+    opacity: 0.7;
+}
+
+
+@media screen and (max-width:768px) {
+    .admin-login {
+        width: 100vw;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .admin-login-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        background: #FFFFFF;
+    }
+
+    .right-admin-login {
+        width: 100%;
+    }
+
+    .right-admin-login img {
+        width: 100%;
+    }
+
+    .left-admin-login {
+        width: 100%;
+        /* max-width: 500px; */
+        padding: 16px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

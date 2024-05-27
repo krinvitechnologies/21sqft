@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.cardsinhome-head{
+    text-align: center;
+    margin: 50px 0px;
+}
+.doubleCard-inhome {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    gap: 40px;
+    margin: 40px 0px;
+}
+@media (min-width: 825px) and (max-width: 1263px) {
+    .doubleCard-inhome {
+      flex-direction: column;
+      gap: 1px;
+      margin: 1px 0px;
+    }
+}
+@media (min-width: 758px) and (max-width: 824px) {
+    .doubleCard-inhome {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        margin: 1px 0px;
+      }
+}
+@media (min-width: 459px) and (max-width: 756px) {
+    .doubleCard-inhome{
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        margin: 1px 0px;
+      }
+}
+@media (max-width: 457px) {
+    .cardsinhome-main{
+        margin-bottom: 25px;
+    }
+    .doubleCard-inhome{
+        display: flex;
+        gap: 0px;
+        margin: 0px 10px 5px 0px;
+        flex-direction: column;
+      }
+}

@@ -1,0 +1,170 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+/* .blog-container{
+    /* height:135rem; *
+    width:100%;
+    background-color: #f0efee;
+    border: 0.01px solid black;
+   
+} */
+.mainDkr{
+    /* height:150rem; */
+    /* width:10%;
+    background: rgb(146, 19, 19);
+    border: 0.001px solid black; */
+    /* padding: 4%; */
+}
+
+.Dkr2{
+    /* height:140rem; */
+    width:100%;
+    padding: 3% 1% 0% 1%;
+   
+    /* margin-top: 5%; */
+ /* margin-left: 5%; */
+   background-color: rgb(254, 248, 248);
+    /* border: 2px solid black; */
+}
+
+
+.blog-container1{ 
+    width: 100%;
+    padding: 2% 5% 2% 5% ;
+    background-color: white;
+
+}
+
+.dkr8-container1{
+    width: 100%;
+    padding: 2% 5% 2% 5% ;
+    background-color: white;
+    border: 1px solid gray;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+
+}
+.Dkr3-img{
+    width: 100%;
+   
+}
+
+.Dkr3-img img{
+    /* height: 5%; */
+    width: 100%;
+    padding: 0px;
+    /* margin-top: 5%; */
+}
+.Dkr4-content{
+    margin-top: 5px;
+}
+.Dkr4-content span{
+    font-size: 30px;
+    font-weight: 400;
+    
+}
+.Dkr5-content1{
+    padding-top: 7px;
+    height:auto;
+    width:100%;
+   
+    /* margin: 5%; */
+   
+    
+    background-color: white;
+    /* border: 2px solid black; */
+}
+.Dkr5-content1 p{
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.Dkr6-icons{
+    /* margin-top:  */
+    display: flex;
+    width: 100%;
+    
+}
+
+/* .blog-ico1ns{
+    /* height: 15vh; *
+    width: 80%;
+    border: 0px solid black;
+    
+} */
+
+.Dkr7-content2{
+    width: 100%;
+}
+
+.link{
+    padding: 5px 0px 5px 0px;;
+    margin: 15px 0px 15px 0px;
+    
+}
+.non{text-decoration: none;
+    color: gold;
+
+}
+
+
+
+.Dkr9-img1 img{
+    /* height: 5%; */
+    width: 100%;
+    height: 70%;
+   
+}
+
+.Dkr10-content span{
+    font-size: 30px;
+    font-weight: 400;
+ }
+
+
+.Dkr11-content1{
+    margin-top: 2%;
+}
+.Dkr11-content1 p{
+    color: rgb(66, 66, 94);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* .blog-content0{
+    margin-top: 2%;
+}
+.blog-content0 span{
+    font-size: 32px;
+    font-weight: 500;
+    
+}
+.blog-paragarph_1{
+    margin-top: 2%; 
+}
+.blog-paragarph_1 p{
+    font-size: 30px;
+    font-weight: 500;
+}
+.blog-img0 img{
+ /* height: 30vh; *
+ width: 30%;
+ margin-top: 5%;
+} */
+
+
+.Dkr13-link{
+    margin: 2% 0% 2% 0%;
+    
+}
+.ccd{
+    text-decoration: none;
+    color: gold;
+}
+
+
+
+

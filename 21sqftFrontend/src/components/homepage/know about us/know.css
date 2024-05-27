@@ -1,0 +1,138 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.know {
+    padding: 16px 5%;
+    box-sizing: border-box;
+}
+
+.know-head {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.know-head h4 {
+    color: rgba(254, 198, 63, 1);
+    font: 'Roboto';
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.know-head h2 {
+    color: rgba(43, 42, 41, 1);
+    font-size: 2rem;
+    font-weight: 700;
+    font: 'Roboto';
+}
+
+.know-cont {
+    display: flex;
+    width: 100%;
+}
+
+.left-know {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-know img {
+    width: 100%;
+    max-width: 400px;
+    height: 100%
+}
+
+.right-know {
+    width: 50%;
+}
+
+.know-paras {
+    color: rgba(43, 42, 41, 1);
+    font: 'Roboto';
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.know-mid-p {
+    color: rgba(24, 25, 28, 1);
+    font: 'Roboto';
+    font-weight: 700;
+    font-size: 18px;
+    margin: 20px 0px 15px 0px;
+}
+
+
+
+.know-list {
+    display: flex;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.parrow {
+    width: 25px;
+    height: 25px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+
+    .know-cont {
+        display: flex;
+        width: 100%;
+    }
+
+    .left-know {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left-know img {
+        width: 100%;
+        max-width: 400px;
+        height: 100%;
+        max-height: 450px;
+    }
+
+    .right-know {
+        width: 50%;
+        margin-top: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .know-cont {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .left-know {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left-know img {
+        width: 100%;
+        max-width: 400px;
+        height: 100%
+    }
+
+    .right-know {
+        width: 100%;
+        margin-top: 16px;
+    }
+}

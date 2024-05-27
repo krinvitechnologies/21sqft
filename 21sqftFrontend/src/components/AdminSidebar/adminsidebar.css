@@ -1,0 +1,301 @@
+.left-hdpro {
+    background: var(--101010, #101010);
+    width: 220px;
+    /* min-width: 200px;
+    max-width: 250px; */
+    padding: 15px;
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.left-hdpro-cont {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.hdpro-back-btn {
+    color: #FFF;
+    font-size: 1.2rem;
+    border: none;
+    background-color: transparent;
+}
+
+.krinvilogo-img-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px 0; */
+    /* padding-bottom: 10px; */
+    box-sizing: border-box;
+    transform: translateY(-20px);
+}
+
+.krinvilogo-img-cont img {
+    width: 40%;
+}
+
+.hlc-logo {
+    /* background-color: aqua; */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hlc-logo div {
+    color: var(--d-1-ffe-1, #FFF);
+    font-family: Poppins;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 600;
+    border-radius: 50%;
+    border: 2px solid #FECC00;
+    /* padding: 20px; */
+    /* height: 80px;
+    width: 80px; */
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    min-height: 60px;
+}
+
+.krinvilogo-img-cont h3 {
+    color: var(--d-1-ffe-1, #FFF);
+    font-family: Poppins;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.hlc-mid-cont {
+    display: flex;
+    flex-direction: column;
+    /* gap: 5px; */
+}
+
+.hdpro-text-list {
+    display: flex;
+    /* width: 238px; */
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: start;
+    gap: 5px;
+    border-radius: 14px;
+    /* background: var(--27-b-357, #27B357); */
+    background: transparent;
+    color: var(--d-1-ffe-1, #FFF);
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.4px;
+    border: none;
+    cursor: pointer;
+}
+
+.hdpro-text-list img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Add this to your CSS file */
+.hdpro-text-list.active {
+    color: #FECC00;
+}
+
+.hdpro-profile-text {
+    color: var(--d-1-ffe-1, #FFF);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 41px;
+    letter-spacing: -0.4px;
+}
+
+.hleftcard-link {
+    text-decoration: none;
+}
+
+.top-hleft-card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hlc-bar-btn {
+    display: none;
+}
+
+.hlc-bottom-cont {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end;
+    align-items: flex-end; */
+    /* background-color: #fc7c7c; */
+    justify-content: center;
+    width: 100%;
+}
+
+.hlc-profile-progress span {
+    color: var(--d-1-ffe-1, #FFF);
+    font-family: Poppins;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.hlc-profile-progress h6 {
+    color: #A6A9AC;
+    font-family: Poppins;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    margin: 5px 0 10px 0;
+}
+
+.hlc-mid-bottom-combine {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* background-color: aqua; */
+    height: 75vh;
+}
+
+.hdpro-logoutbtn {
+    display: flex;
+    /* width: 238px; */
+    width: 180px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+    /* background: var(--27-b-357, #27B357); */
+    color: var(--d-1-ffe-1, #FFF);
+    font-family: Poppins;
+    font-size: 0.9rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.4px;
+    border: 2px solid #FECC00;
+    background: transparent;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .left-hdpro {
+        background: var(--101010, #101010);
+        width: 100%;
+        min-width: none;
+        max-width: none;
+        padding: 15px;
+        box-sizing: border-box;
+        height: 100%;
+        z-index: 99;
+        position: relative;
+    }
+
+    .bottom-sidnav-hlc {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        width: 60%;
+        max-width: 220px;
+        -webkit-animation: mobile-slide ease-out .2s;
+        -moz-animation: mobile-slide ease-out .2s;
+        animation: mobile-slide ease-out .2s;
+        position: fixed;
+        background: #000000;
+        display: block;
+        padding-left: 0;
+        padding: 30px 10px 10px 10px;
+        box-sizing: border-box;
+    }
+
+    .hlc-bar-btn {
+        display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        color: #FFF;
+    }
+
+    .navbar-toggle button {
+        display: block;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5rem;
+        color: #FFF;
+    }
+
+    .items {
+        display: none;
+        overflow: auto;
+    }
+
+    .items.open {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s;
+        display: flex;
+        flex-direction: column;
+        overflow: scroll;
+        overflow-x: scroll;
+        overflow-y: scroll;
+        /* width: 220px; */
+        -webkit-animation: mobile-slide ease-out .2s;
+        -moz-animation: mobile-slide ease-out .2s;
+        animation: mobile-slide ease-out .2s;
+        position: fixed;
+        background: #101010;
+        color: #FFF;
+        display: block;
+        padding-left: 0;
+    }
+
+    .items.open h4 {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        color: #3e4152;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+        text-align: start;
+        height: 8vh;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0px 12px;
+        box-sizing: border-box;
+    }
+
+    .hdpro-logoutbtn {
+        width: 100%;
+        padding: 10px;
+        gap: 10px;
+
+    }
+}

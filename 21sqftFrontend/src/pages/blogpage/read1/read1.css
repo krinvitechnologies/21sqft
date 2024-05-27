@@ -1,0 +1,180 @@
+*{
+    padding: 0%;
+    margin: 0%;
+}
+.R1{
+    /* height:135rem; */
+    width:100%;
+    background-color: #f0efee;
+    border: 0.01px solid black;
+    padding: 2%; 
+   
+}
+
+.R2{
+    /* height:130rem; */
+    width:100%;
+    /* padding: 2%; */
+    /* margin-top: 5%; */
+ /* margin-left: 5%; */
+   background-color: white;
+    /* border: 2px solid black; */
+}
+
+.R3{
+    height:auto;
+    width:100%;
+    /* margin-left: 5%; */
+    padding: 1.5% 3% 1.5% 3%;
+   
+    
+    background-color: white;
+    /* border: 2px solid black; */
+}
+.R4{
+    margin-top: 2%;
+}
+.R4 span{
+    font-size: 32px;
+    font-weight: 500;
+    
+}
+.R5{
+    margin-top: 2%;
+}
+.R5 p{
+    color: rgb(66, 66, 94);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.R6-icon{
+    /* margin-top: 1%; */
+    display: flex;
+    padding-bottom: 1%;
+    
+}
+.R7-img img{
+    width: 30%;
+}
+
+.de{
+    padding-top: 5px;
+}
+
+.R8-para{
+    margin-top: 2%;
+    font-size: 16px;
+    gap: 20px;
+    font-weight: 300;
+}
+.R10-para{
+    padding-top: 1%;
+
+}
+
+.R11-para{
+    margin-top: 2%; 
+}
+.R11-para p{
+    font-size: 22px;
+    font-weight: 500;
+}
+.blog-icod{
+    padding: 1% 0% .5% 0%;
+}
+
+
+.R12{
+    /* height: 15vh; */
+    width:100% ;
+   
+    background-color: #f0efee;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2%;
+    padding: 10px 30px 10px 10px;
+   
+}.R12 span{
+    color: gold;
+}
+.ang{
+    text-decoration: none;
+}
+
+.R13{
+    /* height:85vh; */
+    width:100%;
+    padding: 3%;
+    background-color: white;
+   
+}
+
+.R14{
+    margin-top: 2%;
+}
+.R14 span{
+    font-size: 22px;
+    font-weight: 400;
+    
+}
+.R15-para{
+    padding-top: 1%;
+}
+
+.R16{
+    margin-top: 2%;
+    width: 100%;
+}
+.R16 textarea{
+    width: 100%;
+    padding: 10px;
+}
+.R17{
+    padding-top: 1.5%;
+    display: flex;
+    gap:20px;
+}
+
+.R17 input{
+    /* height: 6vh; */
+    width: 100%;
+    gap: 20px;
+    background-color: #eeeff3;
+    border: 2px solid #f0efee;
+    padding: 10px ;
+}
+
+.R18{
+    padding: 1.5% 0% 1.5% 0%;
+}
+.R19-btn button{
+    padding: 10px;
+    border: none;
+    background: gold;
+    font-size: 16px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
