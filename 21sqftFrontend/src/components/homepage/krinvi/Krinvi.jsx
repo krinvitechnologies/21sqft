@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./krinvi.css"
 import { Link } from 'react-router-dom';
 import 'swiper/swiper-bundle.css';
@@ -16,12 +16,24 @@ const Krinvi = () => {
             img: "/image/krinvi.png",
             link: "https://krinvitechnologies.com/",
         },
-        {
-            id: 2,
-            img: "/image/krinvi.png",
-            link: "https://krinvitechnologies.com/",
-        },
+        // {
+        //     id: 2,
+        //     img: "/image/krinvi.png",
+        //     link: "https://krinvitechnologies.com/",
+        // },
     ]
+
+    // useEffect(() => {
+    //     // Ensure that the AdSense script is loaded
+    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    // }, []);
+
+    useEffect(() => {
+        if (window.adsbygoogle && window.adsbygoogle.loaded === false) {
+            window.adsbygoogle = window.adsbygoogle || [];
+            window.adsbygoogle.push({});
+        }
+    }, []);
 
     return (
         <div className='krinvi'>
@@ -43,9 +55,28 @@ const Krinvi = () => {
                         </SwiperSlide>
                     ))
                 }
+                <SwiperSlide>
+                    <div className="adsense-ad">
+                        <ins className="adsbygoogle"
+                            style={{ display: 'block' }}
+                            data-ad-client="ca-pub-8531308511787623"
+                            data-ad-slot="xxxxxxxxxx"
+                            data-ad-format="auto"></ins>
+                    </div>
+                </SwiperSlide>
             </Swiper>
         </div>
     )
 }
 
 export default Krinvi
+
+//     // adsense code snipit
+// <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8531308511787623"
+//      crossorigin="anonymous"></script>
+
+//     //  ads.txt snipit
+//     google.com, pub - 8531308511787623, DIRECT, f08c47fec0942fa0
+
+//     //  meta tag
+//     < meta name = "google-adsense-account" content = "ca-pub-8531308511787623" >
