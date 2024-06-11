@@ -22,5 +22,6 @@
     .banner2-mobile-img {
         display: block;
         height: 100%;
+        min-height: 75vh;
     }
 }
