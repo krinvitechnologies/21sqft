@@ -44,6 +44,29 @@ function ViewDetails() {
         setShowEditProfileSidebar(false);
     };
 
+    // const deleteCookie = (name) => {
+    //     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`;
+    // };
+    const deleteCookie = (name, path = '/', domain = '') => {
+        console.log(`Deleting cookie: ${name}`);
+        document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=${path}; domain=${domain};`;
+    };
+    // const handleLogout = () => {
+    //     // Assuming the path is '/' and domain is '' (default domain)
+    //     deleteCookie('21sqft', '/', ''); 
+    //     // Perform any other logout actions here (e.g., dispatching logout actions)
+    //     // dispatch(supplierLogout(navigate)); // Uncomment if needed
+    //     navigate('/');
+    // };
+    
+    
+
+    // const handleLogout = () => {
+    //     deleteCookie('21sqft');
+    //     // dispatch(supplierLogout(navigate));
+    //     navigate('/');
+    // };
+
     const handleLogout = () => {
         dispatch(supplierLogout(navigate));
         // Call API to fetch data again
@@ -60,7 +83,6 @@ function ViewDetails() {
             <PulseLoader color="#FECC00" />
         </div>
     }
-
 
     return (
         <div className='cont-detail-cont'>

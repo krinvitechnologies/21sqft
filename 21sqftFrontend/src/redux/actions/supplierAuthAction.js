@@ -143,6 +143,8 @@ export const supplierLogout = (navigate) => async (dispatch) => {
       dispatch({ type: SUPPLIER_LOGOUT_SUCCESS });
     }
     navigate('/');
+    // Reload the page
+    window.location.reload();
 
   } catch (error) {
     dispatch({
