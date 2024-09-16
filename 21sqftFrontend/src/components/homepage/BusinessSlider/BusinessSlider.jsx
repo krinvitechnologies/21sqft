@@ -24,6 +24,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 export default function BusinessSlider() {
 
     const [sendEnquiryOpen, setSendEnquiryOpen] = useState(false);
+    const [expandedItems, setExpandedItems] = useState({}); // State to track expanded items
 
     const navigate = useNavigate();
 
@@ -49,6 +50,14 @@ export default function BusinessSlider() {
 
     const decodeImage = (base64Data) => {
         return `${base64Data}`;
+    };
+
+      // Function to toggle the description expansion
+      const toggleExpansion = (id) => {
+        setExpandedItems(prevState => ({
+            ...prevState,
+            [id]: !prevState[id] // Toggle the expansion for the given item
+        }));
     };
 
     return (
@@ -124,7 +133,22 @@ export default function BusinessSlider() {
 
                                     <div className="bs-card-info">
                                         <h4 className='bs-card-name'>{business.name}</h4>
-                                        <p className='bsc-short-desc' >{business.shortDescription}</p>
+                                        <p className='bsc-short-desc' >
+                                            {/* {business.shortDescription} */}
+                                            {(business.shortDescription && expandedItems[business._id]) 
+                                                ? business.shortDescription 
+                                                : business.shortDescription?.length > 50 
+                                                    ? `${business.shortDescription.substring(0, 50)}...` 
+                                                    : business.shortDescription}
+                                            {business.shortDescription?.length > 50 && (
+                                                <button
+                                                    className='bs-item-view-btn' 
+                                                    onClick={() => toggleExpansion(business._id)}
+                                                >
+                                                    {expandedItems[business._id] ? 'View less' : 'View more'}
+                                                </button>
+                                            )}
+                                        </p>
                                         <div className="bsc-price">{`${business.price}`}</div>
                                         <div className="bsc-location">
                                             <span>

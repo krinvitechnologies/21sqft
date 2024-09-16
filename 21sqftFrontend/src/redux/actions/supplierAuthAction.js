@@ -138,10 +138,11 @@ export const supplierLogout = (navigate) => async (dispatch) => {
       config
     );
 
-    if (data.success) {
-      Cookies.remove('21sqft');
+    // if (data.success) {
+      // Cookies.remove('21sqft');
+      Cookies.remove('21sqft', { path: '/', domain: window.location.hostname });
       dispatch({ type: SUPPLIER_LOGOUT_SUCCESS });
-    }
+    // }
     navigate('/');
     // Reload the page
     window.location.reload();
