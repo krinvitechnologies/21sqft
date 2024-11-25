@@ -111,8 +111,6 @@ const Banner = () => {
     try {
       const addressObject = await autoComplete.getPlace();
       const completeAddress = addressObject?.formatted_address;
-      // console.log('completeAddress', completeAddress);
-
       if ((city.length === 0 || state.length === 0) && service.length === 0) {
         toast.error("Enter location and service");
       }
@@ -126,7 +124,6 @@ const Banner = () => {
         toast.error('Select a valid address');
       }
       else {
-        // console.log('service', service);
         dispatch(fetchSearchResultsByCityAndService(city, state, service, completeAddress));
         navigate("/searcher");
       }
@@ -143,14 +140,14 @@ const Banner = () => {
     <div className="banner">
       {/* <div className="banner-cont">
         <div className="left-banner-text"> */}
-          {/* <h1 className="banner-head1">Looking for Reliable</h1>
+      {/* <h1 className="banner-head1">Looking for Reliable</h1>
           <h1 className="banner-head2">Contractor Suppliers?</h1>
           <h3 className="banner-head3">
             Build with Confidence Using Our High-Quality Cement Materials.
           </h3> */}
-          {/* <h1 className="banner-head1">Construction का एक ही destination - <span className="banner-head2">21SQFT.com!</span></h1> */}
-          {/* <h1 className="banner-head2">21SQFT.com!</h1> */}
-          {/* <button className="banner-btn" onClick={handleConnect}>
+      {/* <h1 className="banner-head1">Construction का एक ही destination - <span className="banner-head2">21SQFT.com!</span></h1> */}
+      {/* <h1 className="banner-head2">21SQFT.com!</h1> */}
+      {/* <button className="banner-btn" onClick={handleConnect}>
             Connect Now
           </button>
         </div>

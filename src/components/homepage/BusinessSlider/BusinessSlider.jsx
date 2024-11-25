@@ -4,13 +4,12 @@ import 'swiper/swiper-bundle.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllContractor } from '../../../redux/actions/contractorAction';
+import { getMostLikedContractor } from '../../../redux/actions/contractorAction';
 import SendEnquiry from '../../../containers/SendEnquiry/SendEnquiry';
 import { PulseLoader } from 'react-spinners';
 import { CiLocationOn } from 'react-icons/ci';
 import { setLike } from '../../../redux/actions/likeAction'
 import { FaRegHeart } from "react-icons/fa";
-
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import SwiperCore from 'swiper';
 // import Swiper and modules styles
@@ -29,10 +28,10 @@ export default function BusinessSlider() {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const { loading, contractor } = useSelector(state => state.contractorReducer);
+    const { loading, mostLikedContractor } = useSelector(state => state.contractorReducer || {});
 
     useEffect(() => {
-        dispatch(getAllContractor());
+        dispatch(getMostLikedContractor());
     }, [dispatch]);
 
     const handleLike = (businessId) => {
@@ -52,8 +51,8 @@ export default function BusinessSlider() {
         return `${base64Data}`;
     };
 
-      // Function to toggle the description expansion
-      const toggleExpansion = (id) => {
+    // Function to toggle the description expansion
+    const toggleExpansion = (id) => {
         setExpandedItems(prevState => ({
             ...prevState,
             [id]: !prevState[id] // Toggle the expansion for the given item
@@ -63,7 +62,7 @@ export default function BusinessSlider() {
     return (
         <div className='business-slider'>
             <div className="businessslider-head-cont">
-                <h3>Most Visited</h3>
+                <h3>Most Liked</h3>
                 <span onClick={() => navigate("/category")}>
                     <FaChevronRight />
                 </span>
@@ -119,15 +118,16 @@ export default function BusinessSlider() {
                             <PulseLoader color="#FECC00" />
                         </div>
                     ) : (
-                        contractor?.contractors?.slice(0, 6).map((business) => (
+                        mostLikedContractor?.contractors?.slice(0, 6).map((business) => (
                             <SwiperSlide className='bs-card' key={business._id}>
                                 <div className="bs-service-name">
                                     <span>{business.service}</span>
                                 </div>
                                 <div className="bs-card-flex">
                                     <div className="bs-card-img">
-                                        {business.image && business.image.length > 0 && (
-                                            <img src={decodeImage(business.image[0])} alt='' />
+                                        {business?.image && business?.image?.length > 0 && (
+                                            // <img src={decodeImage(business.image[0])} alt='' />
+                                            <img src={decodeImage(business?.image)} alt='' />
                                         )}
                                     </div>
 
@@ -135,14 +135,14 @@ export default function BusinessSlider() {
                                         <h4 className='bs-card-name'>{business.name}</h4>
                                         <p className='bsc-short-desc' >
                                             {/* {business.shortDescription} */}
-                                            {(business.shortDescription && expandedItems[business._id]) 
-                                                ? business.shortDescription 
-                                                : business.shortDescription?.length > 50 
-                                                    ? `${business.shortDescription.substring(0, 50)}...` 
+                                            {(business.shortDescription && expandedItems[business._id])
+                                                ? business.shortDescription
+                                                : business.shortDescription?.length > 50
+                                                    ? `${business.shortDescription.substring(0, 50)}...`
                                                     : business.shortDescription}
                                             {business.shortDescription?.length > 50 && (
                                                 <button
-                                                    className='bs-item-view-btn' 
+                                                    className='bs-item-view-btn'
                                                     onClick={() => toggleExpansion(business._id)}
                                                 >
                                                     {expandedItems[business._id] ? 'View less' : 'View more'}

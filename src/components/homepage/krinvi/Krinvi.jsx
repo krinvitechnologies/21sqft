@@ -61,7 +61,17 @@ const Krinvi = () => {
                             style={{ display: 'block' }}
                             data-ad-client="ca-pub-8531308511787623"
                             data-ad-slot="xxxxxxxxxx"
-                            data-ad-format="auto"></ins>
+                            data-ad-format="auto">
+                            {
+                                imageSlider.map((image) => (
+                                    <SwiperSlide key={image.id}>
+                                        <Link to={image.link}>
+                                            < img src={image.img} alt="" />
+                                        </Link>
+                                    </SwiperSlide>
+                                ))
+                            }
+                        </ins>
                     </div>
                 </SwiperSlide>
             </Swiper>
