@@ -275,6 +275,15 @@
   background-position: -2800px 0;
 }
 
+.no-results {
+  color: #2B2A29;
+  text-align: center;
+  font-size: 1rem;
+  font-family: Roboto;
+  font-weight: 500;
+  height: 30vh;
+}
+
 
 @media screen and (min-width:576px) and (max-width: 768px) {
   .category-cards-cont {

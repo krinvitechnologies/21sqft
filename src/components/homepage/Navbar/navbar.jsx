@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import squarefeet from "./navbar images/21SQFT B 1.png";
 import profile from "./navbar images/Frame 6.png";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSearchResults } from "../../../redux/actions/searchAction";
+import { fetchSearchResults, fetchSearchResultsByCityAndService } from "../../../redux/actions/searchAction";
 import UserProfileSidebar from "../../../containers/UserProfileSidebar/UserProfileSidebar";
 import { FaSearch } from "react-icons/fa";
 
@@ -13,7 +13,8 @@ const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [showResults, setShowResults] = useState(false);
     // const { data } = useSelector(state => state.searchReducer);
-    const searchResults = useSelector((state) => state.searchReducer.data);
+    // const searchResults = useSelector((state) => state.searchReducer.data);
+    const searchResults = useSelector((state) => state.searchReducer.contractor);
     // console.log(searchResults)
     const [showMenu, setShowMenu] = useState(false);
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
@@ -88,8 +89,8 @@ const Navbar = () => {
     // );
 
     const filteredResults =
-        searchResults && searchResults.data
-            ? searchResults.data.filter(
+        searchResults
+            ? searchResults.filter(
                 (item) =>
                     `${item.name} ${item.service} ${item.address} ${item.city} ${item.state}`
                         .toLowerCase()
@@ -106,10 +107,20 @@ const Navbar = () => {
             : [];
     // console.log(filteredResults)
     // console.log(searchResults.data)
+
+    const [page, setPage] = useState(1);
+    const limit = 4;
+
     const navigate = useNavigate();
-    const handleRedirect = () => {
+    const handleRedirect = (selectedBusiness) => {
         // Redirect logic here
-        navigate("/searcher", { state: { results: filteredResults } });
+        // navigate("/searcher", { state: { results: filteredResults } });
+        navigate(
+            `/searcher?address=${encodeURIComponent(
+                selectedBusiness.address.toLowerCase()
+            )}&service=${encodeURIComponent(selectedBusiness.service.toLowerCase())}`
+        );
+        dispatch(fetchSearchResultsByCityAndService(selectedBusiness.service.toLowerCase(), selectedBusiness.address.toLowerCase(), page, limit));
         setShowResults(false);
     };
 
@@ -129,7 +140,7 @@ const Navbar = () => {
     );
 
     const handleSupplierProfile = () => {
-        const id = supplier.contractor.id;
+        const id = supplier.contractor._id || supplier.contractor.id;
         navigate(`/ViewDetails/${id}`);
     };
 

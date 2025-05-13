@@ -124,8 +124,14 @@ const Banner = () => {
         toast.error('Select a valid address');
       }
       else {
-        dispatch(fetchSearchResultsByCityAndService(city, state, service, completeAddress));
-        navigate("/searcher");
+        // dispatch(fetchSearchResultsByCityAndService(city, state, service.toLowerCase(), completeAddress));
+        // Navigate to the search page with query parameters in the URL
+        navigate(
+          `/searcher?city=${encodeURIComponent(city)}&state=${encodeURIComponent(
+            state
+          )}&service=${encodeURIComponent(service)}&address=${encodeURIComponent(completeAddress)}`
+        );
+        // navigate("/searcher");
       }
     } catch (error) {
       console.log(error);

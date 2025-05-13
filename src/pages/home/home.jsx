@@ -10,11 +10,13 @@ import Knowourprocess from '../../components/homepage/know our process/knowourpr
 import Explore from '../../components/homepage/explore/explore';
 import Contactform from '../../components/homepage/contactform/contactform';
 import BusinessSlider from '../../components/homepage/BusinessSlider/BusinessSlider';
+import PosterSlider from '../../components/homepage/PosterSlider/PosterSlider';
 
 const Home = () => {
     return (
         <div className='home'>
             <Navbar />
+            {/* <PosterSlider /> */}
             <Banner2 />
             <Banner />
             <Explore />

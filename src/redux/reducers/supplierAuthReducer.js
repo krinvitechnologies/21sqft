@@ -23,6 +23,9 @@ import {
   SUPPLIER_SET_NEW_PASSWORD_REQUEST,
   SUPPLIER_SET_NEW_PASSWORD_SUCCESS,
   SUPPLIER_SET_NEW_PASSWORD_FAIL,
+  SUPPLIER_ACCOUNT_DELETE_REQUEST,
+  SUPPLIER_ACCOUNT_DELETE_SUCCESS,
+  SUPPLIER_ACCOUNT_DELETE_FAILURE,
 } from "../constants/supplierAuthConstant";
 
 const initialState = {
@@ -42,6 +45,7 @@ export const supplierAuthReducer = (state = initialState, action) => {
     case GET_SUPPLIER_REQUEST:
     case SUPPLIER_EDIT_REQUEST:
     case SUPPLIER_LOGOUT_REQUEST:
+    case SUPPLIER_ACCOUNT_DELETE_REQUEST:
     case SUPPLIER_FORGOT_PASSWORD_OTP_SEND_REQUEST:
     case SUPPLIER_FORGOT_PASSWORD_OTP_VERIFY_REQUEST:
     case SUPPLIER_SET_NEW_PASSWORD_REQUEST:
@@ -64,6 +68,16 @@ export const supplierAuthReducer = (state = initialState, action) => {
         supplier: action.payload,
         error: null,
         isSupplierAuthenticated: true
+      };
+
+    case SUPPLIER_ACCOUNT_DELETE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        supplier: null,
+        error: null,
+        isSupplierAuthenticated: false
       };
 
     case SUPPLIER_FORGOT_PASSWORD_OTP_SEND_SUCCESS:
@@ -101,7 +115,8 @@ export const supplierAuthReducer = (state = initialState, action) => {
     case SUPPLIER_LOGIN_FAILURE:
     case GET_SUPPLIER_FAILURE:
     case SUPPLIER_EDIT_FAILURE:
-    case SUPPLIER_LOGOUT_FAIL:
+      case SUPPLIER_LOGOUT_FAIL:
+      case SUPPLIER_ACCOUNT_DELETE_FAILURE:
       return {
         ...state,
         loading: false,

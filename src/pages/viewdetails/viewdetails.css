@@ -4,6 +4,7 @@
   box-sizing: border-box;
   overflow: hidden;
 }
+
 .cd-header {
   margin: 0px;
   padding: 0px;
@@ -79,6 +80,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  gap: 8px;
 }
 
 .cd-edit-btn button {
@@ -212,6 +214,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+  gap: 8px;
 }
 
 .cd-logout-btn button {
@@ -229,6 +232,14 @@
 
 .cd-logout-btn button:hover {
   opacity: 0.7;
+}
+
+.vd-del-acc-btns {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 @media screen and (min-width:480px)and (max-width:768px) {

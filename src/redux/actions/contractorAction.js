@@ -11,12 +11,41 @@ import {
     GET_MOST_LIKED_CONTRACTOR_SUCCESS
 } from "../constants/contractorConstant";
 
-export const getAllContractor = () => {
+// export const getAllContractor = () => {
+//     return async (dispatch) => {
+//         dispatch({ type: GET_ALL_CONTRACTOR_REQUEST });
+//         try {
+
+//             const response = await axiosRequest.get('/contractor/get-all');
+
+//             dispatch({
+//                 type: GET_ALL_CONTRACTOR_SUCCESS,
+//                 payload: response.data
+//             });
+
+//             return response.data;
+//         } catch (error) {
+//             dispatch({
+//                 type: GET_ALL_CONTRACTOR_FAILURE,
+//                 payload: error.message
+//             });
+//             // console.log(error);
+//             // console.error(`${error?.response?.data?.message || 'Something Went Wrong'}`);
+//             // toast.error(`${error?.response?.data?.message || 'Something Went Wrong'}`);
+//             // throw error;
+//         }
+//     };
+// };
+
+
+export const getAllContractor = (page = 1, limit = 10, service, completeAddress) => {
     return async (dispatch) => {
         dispatch({ type: GET_ALL_CONTRACTOR_REQUEST });
         try {
 
-            const response = await axiosRequest.get('/contractor/get-all');
+            // const response = await axiosRequest.get('/contractor/get-all');
+            // const response = await axiosRequest.get(`/contractor/get-all?page=${page}&limit=${limit}`);
+            const response = await axiosRequest.get(`/contractor/get-all?page=${page}&limit=${limit}&&service=${service}&&completeAddress=${completeAddress}`);
 
             dispatch({
                 type: GET_ALL_CONTRACTOR_SUCCESS,
@@ -79,10 +108,10 @@ export const getContractorDetail = (id) => {
                 type: GET_CONTRACTOR_DETAIL_FAILURE,
                 payload: error.message
             });
-            console.log(error);
+            // console.log(error);
             // console.error(`${error?.response?.data?.message || 'Something Went Wrong'}`);
             // toast.error(`${error?.response?.data?.message || 'Something Went Wrong'}`);
-            throw error;
+            // throw error;
         }
     };
 };

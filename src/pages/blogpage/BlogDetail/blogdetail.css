@@ -1,0 +1,164 @@
+* {
+    padding: 0%;
+    margin: 0%;
+}
+
+.bd-cont {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
+    background-color: #f5f2ef;
+}
+
+.bd-sections {
+    background-color: #FFFFFF;
+    padding: 4%;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+}
+
+.bd-share-icon {
+    display: flex;
+}
+
+.bd-img-cont img {
+    width: 100%;
+    max-width: 480px;
+    margin: 12px 0;
+}
+
+.blog-ico {
+    padding-bottom: 2%;
+}
+
+.bd-comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.bd-comment-form span{
+    color: #2B2A29;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+.bd-comment-form textarea {
+    width: 100%;
+    background-color: #f0efee;
+    padding: 12px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    color: #2B2A29;
+    font-family: 'Roboto';
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 12px;
+}
+
+.bd-cf-fields {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+}
+
+.bd-comment-form input {
+    height: 42px;
+    width: 100%;
+    background-color: #f0efee;
+    padding: 0 12px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    color: #2B2A29;
+    font-family: 'Roboto';
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 8px;
+}
+
+.blog-detail-desc {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    padding-bottom: 2%;
+    box-sizing: border-box;
+    white-space: pre-line;
+    color: #2B2A29;
+    font-family: 'Roboto';
+    font-weight: 400;
+}
+
+.recent-comment-section {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 16px;
+    box-sizing: border-box;
+    margin-top: 16px;
+}
+
+.rc-text-heading {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    padding: 16px 0;
+    box-sizing: border-box;
+}
+
+.recent-comment-box {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    padding: 12px 0;
+    box-sizing: border-box;
+}
+
+.rc-head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+}
+
+.rc-picon {
+    font-size: 2rem;
+    color: #8B8B8B;
+}
+
+.rc-head div {
+    display: flex;
+    flex-direction: column;
+}
+
+.rc-name {
+    color: #2B2A29;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.rc-created-at {
+    color: #8B8B8B;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.rc-message {
+    color: #2B2A29;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 12px;
+}
+
+@media screen and (max-width: 576px) {
+    .bd-cont {
+        width: 100%;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f5f2ef;
+    }
+}

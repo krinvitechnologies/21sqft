@@ -30,6 +30,9 @@ import FPChangePassword from './pages/UserAuth/ForgotPassword/FPChangePassword.j
 import SupplierVerifyEmail from './pages/SupplierAuth/SupplierForgotPassword/SupplierVerifyEmail.jsx';
 import SupplierVerifyOtp from './pages/SupplierAuth/SupplierForgotPassword/SupplierVerifyOtp.jsx';
 import SupplierChangePassword from './pages/SupplierAuth/SupplierForgotPassword/SupplierChangePassword.jsx';
+import AdminPosters from './pages/AdminPosters/AdminPosters.jsx';
+import AdminBlogs from './pages/AdminBlogs/AdminBlogs.jsx';
+import BlogDetail from './pages/blogpage/BlogDetail/BlogDetail.jsx';
 
 function App() {
 
@@ -53,6 +56,7 @@ function App() {
           <Route path="/searcher" element={<Searcher />} />
           <Route path="/profilesupplier" element={<ProfileSupplier />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
           <Route path="/creating-a-cozy-retreat-tips-for-designing-a-comfortable-living-space" element={<Read />} />
           <Route path="/why-work-zone-safety-is-important-for-everyone" element={<Read1 />} />
           <Route path="/contact" element={<Contact />} />
@@ -69,6 +73,8 @@ function App() {
           {/* admin routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/business" element={<AdminBusiness />} />
+          <Route path="/admin/posters" element={<AdminPosters />} />
+          <Route path="/admin/blogs" element={<AdminBlogs />} />
         </Routes>
       </Router>
       <ToastContainer />

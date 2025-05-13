@@ -11,7 +11,6 @@
 }
 
 .navbar {
-
     /* background: greenyellow; */
     height: 70px;
     scroll-behavior: smooth;
@@ -44,12 +43,10 @@
     /* height: 60px; */
 }
 
-
 .navbar-link-color-register {
     color: rgba(255, 255, 255, 1);
     text-decoration: none;
 }
-
 
 /* search box */
 .search-box {
@@ -66,7 +63,6 @@
     box-sizing: border-box;
     border: 1px solid #D3D3D3;
     display: flex;
-
     align-items: center;
     border-radius: 20px;
     /* padding: 10px 20px; */
@@ -194,7 +190,6 @@
     list-style: none;
 }
 
-
 .navbar-ul li {
     color: rgba(43, 42, 41, 1);
     font: 'Roboto';
@@ -239,7 +234,6 @@
     height: 56px;
     cursor: pointer;
 }
-
 
 .line {
     width: 32px;

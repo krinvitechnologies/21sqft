@@ -10,7 +10,6 @@ import {
     CONTRACTOR_STATUS_EDIT_SUCCESS
 } from '../constants/adminConstant.js';
 
-
 // admin login
 export const adminLogin = (adminLoginData, navigate) => {
     return async (dispatch) => {
@@ -35,7 +34,7 @@ export const adminLogin = (adminLoginData, navigate) => {
             // console.log(error);
             // console.error(`${error?.response?.data?.error || 'Something Went Wrong'}`);
             toast.error(`${error?.response?.data?.message || 'Something Went Wrong'}`);
-            throw error;
+            // throw error;
         }
     };
 };

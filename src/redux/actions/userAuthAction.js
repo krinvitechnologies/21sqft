@@ -39,7 +39,7 @@ export const userRegister = (userRegisterData, navigate) => {
 
       // Set the token in cookies
       const { token } = response.data;
-      Cookies.set('21sqft', token, { expires: 7 });
+      Cookies.set('21sqft', token, { expires: 30 });
       navigate('/');
       return response.data
     } catch (error) {
@@ -74,7 +74,7 @@ export const userLogin = (userLoginData, navigate) => {
 
       // Set the token in cookies
       const { token } = response.data;
-      Cookies.set('21sqft', token, { expires: 7 });
+      Cookies.set('21sqft', token, { expires: 30 });
       navigate('/');
       return response.data
     } catch (error) {

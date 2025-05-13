@@ -79,12 +79,28 @@ const AdminSidebar = () => {
 
                                     <div className="hlc-mid-cont">
 
-                                        <Link to="/hirenow/dashboard" className='hleftcard-link'>
+                                        <Link to="/admin/business" className='hleftcard-link'>
                                             <button
                                                 className={`hdpro-text-list ${location.pathname === '/admin/business' ? 'active' : ''
                                                     }`}
                                             >
                                                 Business
+                                            </button>
+                                        </Link>
+                                        {/* <Link to="/admin/posters" className='hleftcard-link'>
+                                            <button
+                                                className={`hdpro-text-list ${location.pathname === '/admin/posters' ? 'active' : ''
+                                                    }`}
+                                            >
+                                                Posters
+                                            </button>
+                                        </Link> */}
+                                        <Link to="/admin/blogs" className='hleftcard-link'>
+                                            <button
+                                                className={`hdpro-text-list ${location.pathname === '/admin/blogs' ? 'active' : ''
+                                                    }`}
+                                            >
+                                                Blogs
                                             </button>
                                         </Link>
 

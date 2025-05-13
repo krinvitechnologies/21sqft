@@ -41,12 +41,12 @@ function SupplierEditSidebar({ SupplierEditProfileSidebar }) {
         }
     }, [supplier]);
 
-    useEffect(() => {
-        document.body.style.overflowY = 'hidden';
-        return () => {
-            document.body.style.overflowY = 'scroll';
-        };
-    }, []);
+    // useEffect(() => {
+    //     document.body.style.overflowY = 'hidden';
+    //     return () => {
+    //         document.body.style.overflowY = 'scroll';
+    //     };
+    // }, []);
 
     const inputRef = useRef(null);
 

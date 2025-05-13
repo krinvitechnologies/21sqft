@@ -10,6 +10,9 @@ import contractorReducer from "./contractorReducer";
 import sendEnquiryReducer from "./sendEnquiryReducer";
 import subscribeReducer from "./subscribeReducer";
 import adminReducer from "./adminReducer";
+import posterReducer from "./posterReducer";
+import blogReducer from "./blogReducer";
+import commentReducer from "./commentReducer";
 
 const rootReducer = combineReducers({
   contactReducer,
@@ -22,7 +25,10 @@ const rootReducer = combineReducers({
   contractorReducer,
   sendEnquiryReducer,
   subscribeReducer,
-  adminReducer
+  adminReducer,
+  posterReducer,
+  blogReducer,
+  commentReducer
 });
 
 export default rootReducer;

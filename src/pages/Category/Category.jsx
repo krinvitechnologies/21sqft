@@ -6,10 +6,13 @@ import Footer from '../../components/homepage/footer/footer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllContractor } from '../../redux/actions/contractorAction';
 import SendEnquiry from '../../containers/SendEnquiry/SendEnquiry';
-import { PulseLoader } from 'react-spinners';
+import { ClipLoader, PulseLoader } from 'react-spinners';
 import { CiLocationOn } from 'react-icons/ci';
 import { setLike } from '../../redux/actions/likeAction'
 import { REACT_APP_GOOGLE_MAPS_KEY } from "../../redux/constants/constant";
+import { toast } from "react-toastify";
+import ServicesSidebar from '../../containers/ServicesSidebar/ServicesSidebar';
+// import ServicesSidebar from "../../../containers/ServicesSidebar/ServicesSidebar";
 
 let autoComplete;
 
@@ -44,12 +47,31 @@ function Category() {
     const navigate = useNavigate();
 
     const dispatch = useDispatch();
-    const { loading, success, contractor } = useSelector(state => state.contractorReducer);
-    const { user } = useSelector(state => state.userReducer);
 
-    useEffect(() => {
-        dispatch(getAllContractor());
-    }, [dispatch]);
+    const [serviced, setServiced] = useState(false);
+
+    const openServiceSidebar = () => {
+        setServiced(true);
+    };
+
+    const closeServiceSidebar = () => {
+        setServiced(false);
+        setService(sessionStorage.getItem("opts"));
+    };
+
+
+    const [page, setPage] = useState(1);
+    const limit = 8;
+
+    // const { loading, success, contractor } = useSelector(state => state.contractorReducer);
+    const { contractor, totalContractors, totalPages, currentPage, loading } = useSelector((state) => state.contractorReducer) || {};
+
+    const { user } = useSelector(state => state.userReducer);
+    // console.log('contractor',contractor);
+
+    // useEffect(() => {
+    //     dispatch(getAllContractor());
+    // }, [dispatch]);
 
     const handleScriptLoad = useCallback((updateQuery, autoCompleteRef) => {
         autoComplete = new window.google.maps.places.Autocomplete(
@@ -98,11 +120,52 @@ function Category() {
         );
     }, [handleScriptLoad]);
 
+
     useEffect(() => {
-        if (success && contractor) {
-            setFilteredContractors(contractor.contractors);
+        const addressObject = autoComplete?.getPlace();
+        const completeAddress = addressObject?.formatted_address;
+        dispatch(getAllContractor(page, limit, service, completeAddress));
+    }, [dispatch, page]);
+
+
+    // const handleScroll = useCallback(() => {
+    //     if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || loading) return;
+    //     if (currentPage < totalPages) {
+    //         setPage(prevPage => prevPage + 1);
+    //     }
+    // }, [loading, currentPage, totalPages]);
+    const handleScroll = useCallback(() => {
+        if (
+            loading ||
+            window.innerHeight + document.documentElement.scrollTop < document.documentElement.offsetHeight - 200
+        ) {
+            return;
         }
-    }, [success, contractor]);
+        if (currentPage < totalPages) {
+            setPage(prevPage => prevPage + 1);
+        }
+    }, [loading, currentPage, totalPages]);
+
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
+
+    // useEffect(() => {
+    //     if (success && contractor) {
+    //         // setFilteredContractors(contractor.contractors);
+    //         setFilteredContractors(contractor);
+    //     }
+    // }, [success, contractor]);
+    useEffect(() => {
+        if (contractor) {
+            setFilteredContractors(prev =>
+                page === 1 ? contractor : [...prev, ...contractor]
+            );
+        }
+    }, [contractor, page]);
+    // console.log('filteredContractors',filteredContractors);
 
     // console.log('city',city);
     // console.log('state',state);
@@ -115,14 +178,41 @@ function Category() {
     //     );
     //     setFilteredContractors(filtered);
     // };
-    const handleSearch = () => {
-                // Filter contractors based on both service name and address
-                const filtered = contractor.contractors.filter(item => 
-                    item.service.toLowerCase().includes(service.toLowerCase()) &&
-                    (item.city.toLowerCase().includes(city.toLowerCase()) || item.state.toLowerCase().includes(state.toLowerCase()))
-                );
-                setFilteredContractors(filtered);
-            };
+    // const handleSearch = () => {
+    //     // Filter contractors based on both service name and address
+    //     // const filtered = contractor.contractors.filter(item => 
+    //     const filtered = contractor.filter(item =>
+    //         item.service.toLowerCase().includes(service.toLowerCase()) &&
+    //         (item.city.toLowerCase().includes(city.toLowerCase()) || item.state.toLowerCase().includes(state.toLowerCase()))
+    //     );
+    //     setFilteredContractors(filtered);
+    // };
+
+    const handleSearch = async () => {
+        try {
+            const addressObject = await autoComplete.getPlace();
+            const completeAddress = addressObject?.formatted_address;
+            if ((city.length === 0 || state.length === 0) && service.length === 0) {
+                toast.error("Enter location and service");
+            }
+            else if (city.length === 0 || state.length === 0) {
+                toast.error('Enter location');
+            }
+            else if (service.length === 0) {
+                toast.error('Select service');
+            }
+            else if (!completeAddress) {
+                toast.error('Select a valid address');
+            }
+            else {
+                setFilteredContractors([]);
+                setPage(1);
+                dispatch(getAllContractor(page, limit, service, completeAddress));
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const handleLike = (businessId) => {
         dispatch(setLike(businessId));
@@ -140,6 +230,16 @@ function Category() {
         return `${base64Data}`;
     };
 
+    const [expandedItems, setExpandedItems] = useState({}); // State to track expanded items
+
+        // Function to toggle the description expansion
+        const toggleExpansion = (id) => {
+            setExpandedItems(prevState => ({
+                ...prevState,
+                [id]: !prevState[id] // Toggle the expansion for the given item
+            }));
+        };
+
     return (
         <div>
             <Navbar />
@@ -152,15 +252,24 @@ function Category() {
                     <p>Home-Categories</p>
                 </div>
                 <div className="top-cat-search-field-cont">
-                    <input type="text" placeholder='Location'  ref={autoCompleteRef} value={address} onChange={(e) => setAddress(e.target.value)} />
-                    <input type="text" placeholder='Services' value={service} onChange={(e) => setService(e.target.value)} />
+                    <input type="text" placeholder='Location' ref={autoCompleteRef} value={address} onChange={(e) => setAddress(e.target.value)} />
+                    {/* <input type="text" placeholder='Services' value={service} onChange={(e) => setService(e.target.value.toLowerCase())} /> */}
+                    <input
+                        type="text"
+                        onClick={openServiceSidebar}
+                        onChange={(e) => setService(e.target.value.toLowerCase())}
+                        placeholder="Services"
+                        value={service}
+                        // readOnly
+                    />
+                    {serviced && <ServicesSidebar service0={closeServiceSidebar} />}
                     <button type='submit' onClick={handleSearch}>
                         search
                     </button>
                 </div>
 
                 <div className="category-cards-cont">
-                    {loading ? (
+                    {/* {loading ? (
                         <div style={{
                             display: 'flex',
                             justifyContent: 'center',
@@ -169,10 +278,13 @@ function Category() {
                         }}>
                             <PulseLoader color="#FECC00" />
                         </div>
-                    ) : success && contractor ? (
+                    // ) : success && contractor ? (
+                    ) : */}
+                    {contractor ? (
+                          filteredContractors.length > 0 ? (
                         filteredContractors.map((item, index) => (
                             <div className="category-card" key={index}>
-                                {/* // contractor.contractors.map((item, index) => ( */ }
+                                {/* // contractor.contractors.map((item, index) => ( */}
                                 <div className="category-service-name">
                                     <span>{item.service}</span>
                                 </div>
@@ -184,13 +296,28 @@ function Category() {
                                     </div>
                                     <div className="category-card-info">
                                         <h4 className='cc-name'>{item.name}</h4>
-                                        <p className='cc-short-desc'>{item.shortDescription}</p>
+                                        <p className='cc-short-desc'>
+                                            {/* {item.shortDescription} */}
+                                            {(item.shortDescription && expandedItems[item._id])
+                                                ? item.shortDescription
+                                                : item.shortDescription?.length > 80
+                                                    ? `${item.shortDescription.substring(0, 80)}...`
+                                                    : item.shortDescription}
+                                            {/* {item.shortDescription?.length > 80 && (
+                                                <button
+                                                    className='bs-item-view-btn'
+                                                    onClick={() => toggleExpansion(item._id)}
+                                                >
+                                                    {expandedItems[item._id] ? 'View less' : 'View more'}
+                                                </button>
+                                            )} */}
+                                            </p>
                                         <div className='cc-price'>{item.price}</div>
                                         <div className="cc-location">
                                             <span><CiLocationOn /> {item.city},{item.state}</span>
                                         </div>
                                         <div className="cc-buttons">
-                                            <button type='submit' onClick={handleSendEnquiryOpen} className='cc-send-btn'> Send Enquiry</button>
+                                            <button type='submit' onClick={handleSendEnquiryOpen} className='cc-send-btn'>Send Enquiry</button>
                                             <button type='submit' onClick={() => handleViewDetails(item._id)} className='cc-view-btn'>View Details</button>
                                             <button className='cc-like-btn'>
                                                 {/* <FaRegHeart onClick={() => handleLike(item._id)} /> */}
@@ -205,9 +332,27 @@ function Category() {
                                 </div>
                             </div>
                         ))
+                    ) : (
+                        <div className="no-results">
+                          No results found.
+                        </div>
+                      )
                     ) : null}
-
                 </div>
+
+
+                {loading && (
+                    <div style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        height: '40vh'
+                    }}>
+                        <ClipLoader color={"#FECC00"} loading={loading} size={50} />
+                    </div>
+                )}
+
+
             </div>
             <Footer />
         </div>

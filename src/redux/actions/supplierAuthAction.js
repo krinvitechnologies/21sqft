@@ -24,7 +24,10 @@ import {
   SUPPLIER_FORGOT_PASSWORD_OTP_VERIFY_SUCCESS,
   SUPPLIER_SET_NEW_PASSWORD_FAIL,
   SUPPLIER_SET_NEW_PASSWORD_REQUEST,
-  SUPPLIER_SET_NEW_PASSWORD_SUCCESS
+  SUPPLIER_SET_NEW_PASSWORD_SUCCESS,
+  SUPPLIER_ACCOUNT_DELETE_REQUEST,
+  SUPPLIER_ACCOUNT_DELETE_SUCCESS,
+  SUPPLIER_ACCOUNT_DELETE_FAILURE
 } from "../constants/supplierAuthConstant.js";
 
 // Supplier Registration
@@ -40,7 +43,7 @@ export const supplierRegister = (supplierRegisterData, navigate) => {
 
       // Set the token in cookies
       const { token } = response.data;
-      Cookies.set('21sqft', token, { expires: 7 });
+      Cookies.set('21sqft', token, { expires: 30 });
       navigate('/');
       return response.data
     } catch (error) {
@@ -70,7 +73,7 @@ export const supplierLogin = (supplierLoginData, navigate) => {
 
       // Set the token in cookies
       const { token } = response.data;
-      Cookies.set('21sqft', token, { expires: 7 });
+      Cookies.set('21sqft', token, { expires: 30 });
       navigate('/');
       return response.data
     } catch (error) {
@@ -139,9 +142,9 @@ export const supplierLogout = (navigate) => async (dispatch) => {
     );
 
     // if (data.success) {
-      // Cookies.remove('21sqft');
-      Cookies.remove('21sqft', { path: '/', domain: window.location.hostname });
-      dispatch({ type: SUPPLIER_LOGOUT_SUCCESS });
+    // Cookies.remove('21sqft');
+    Cookies.remove('21sqft', { path: '/', domain: window.location.hostname });
+    dispatch({ type: SUPPLIER_LOGOUT_SUCCESS });
     // }
     navigate('/');
     // Reload the page
@@ -183,10 +186,7 @@ export const supplierEditProfile = (supplierEditProfileData) => async (dispatch)
       payload: response?.data,
     });
     toast.success(response?.data?.message || "Profile Updated Successfully");
-    // Handle navigation if needed
-
     return response.data;
-
   } catch (error) {
     dispatch({
       type: SUPPLIER_EDIT_FAILURE,
@@ -195,6 +195,34 @@ export const supplierEditProfile = (supplierEditProfileData) => async (dispatch)
     toast.error(error.response?.data?.message || 'Something Went Wrong');
   }
 };
+
+// Delete supplier business account
+export const deleteSupplierAccount = (id, navigate) => {
+  return async (dispatch) => {
+    dispatch({ type: SUPPLIER_ACCOUNT_DELETE_REQUEST, payload: id });
+    try {
+      await axiosRequest.delete(`/contractor/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('21sqft')}`,
+        },
+      });
+
+      dispatch({
+        type: SUPPLIER_ACCOUNT_DELETE_SUCCESS,
+        payload: { id },
+      });
+      Cookies.remove('21sqft');
+      navigate('/');
+    } catch (error) {
+      dispatch({
+        type: SUPPLIER_ACCOUNT_DELETE_FAILURE,
+        payload: { id, error: error },
+      });
+      toast.error(`${error?.response?.data?.message || error?.response?.data?.error || 'Something Went Wrong'}`);
+    }
+  };
+};
+
 
 
 // FORGOT PASSWORD API

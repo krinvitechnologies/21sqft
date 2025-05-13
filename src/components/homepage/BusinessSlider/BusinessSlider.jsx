@@ -105,7 +105,6 @@ export default function BusinessSlider() {
                 //     disableOnInteraction: false, // Prevent autoplay from stopping on user interaction
                 // }}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
-
             >
                 <div className='bs-cont'>
                     {loading ? (
