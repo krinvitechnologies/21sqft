@@ -36,12 +36,12 @@ import BlogDetail from './pages/blogpage/BlogDetail/BlogDetail.jsx';
 
 function App() {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getSupplier());
-    dispatch(getUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getSupplier());
+  //   dispatch(getUser());
+  // }, [dispatch]);
 
   return (
     <div className="App">

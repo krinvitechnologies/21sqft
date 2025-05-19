@@ -8,6 +8,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchSearchResults, fetchSearchResultsByCityAndService } from "../../../redux/actions/searchAction";
 import UserProfileSidebar from "../../../containers/UserProfileSidebar/UserProfileSidebar";
 import { FaSearch } from "react-icons/fa";
+import { getSupplier } from "../../../redux/actions/supplierAuthAction";
+import { getUser } from "../../../redux/actions/userAuthAction";
 
 const Navbar = () => {
     const [searchQuery, setSearchQuery] = useState("");
@@ -22,6 +24,12 @@ const Navbar = () => {
     const resultBoxRef = useRef(null);
     // const [name,setName]=useState('')
     const dispatch = useDispatch();
+
+    // get the authenticated user profile
+    useEffect(() => {
+        dispatch(getSupplier());
+        dispatch(getUser());
+    }, [dispatch]);
 
     useEffect(() => {
         if (searchQuery.length) {

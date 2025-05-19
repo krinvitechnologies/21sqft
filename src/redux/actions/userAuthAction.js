@@ -82,7 +82,7 @@ export const userLogin = (userLoginData, navigate) => {
         type: USER_LOGIN_FAILURE,
         payload: error.message
       });
-      console.log(error);
+      // console.log(error);
       // console.error(`${error?.response?.data?.error || 'Something Went Wrong'}`);
       toast.error(`${error?.response?.data?.message || 'Something Went Wrong'}`);
       throw error;
@@ -97,6 +97,11 @@ export const getUser = () => {
     try {
       const token = Cookies.get('21sqft');
       // console.log('user token', token);
+      if (!token) {
+        return;
+        // throw new Error('Authentication token not found');
+      }
+
       const response = await axiosRequest.get('/user/get', {
         headers: {
           Authorization: `Bearer ${token}`,

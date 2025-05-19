@@ -91,7 +91,8 @@ const AdminLogin = () => {
 
                 </div>
                 <div className="right-admin-login">
-                    <img src="/image/div2.jpg" alt="" />
+                    {/* <img src="/image/div2.jpg" alt="" /> */}
+                    <img src="/assets/business_auth.webp" alt="" />
                 </div>
             </div>
         </div>

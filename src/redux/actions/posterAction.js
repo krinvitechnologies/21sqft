@@ -8,17 +8,17 @@ export const getPosters = () => {
     return async (dispatch) => {
         dispatch({ type: GET_POSTERS_REQUEST });
         try {
-            const token = Cookies.get('21sqft'); // Get the token from cookies
+            // const token = Cookies.get('21sqft'); 
             // if (!token) {
             //   throw new Error('Authentication token not found');
             // }
 
-            const response = await axiosRequest.get('/admin/poster/get', {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-
+            // const response = await axiosRequest.get('/admin/poster/get', {
+            //     headers: {
+            //         Authorization: `Bearer ${token}`,
+            //     },
+            // });
+            const response = await axiosRequest.get('/poster/get');
             dispatch({
                 type: GET_POSTERS_SUCCESS,
                 payload: response.data
@@ -40,8 +40,15 @@ export const getPosters = () => {
 export const addPoster = (formData) => {
     return async (dispatch) => {
         dispatch({ type: ADD_POSTERS_REQUEST });
+        const token = Cookies.get('21sqft');
+        const config = {
+            headers: {
+                // "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
         try {
-            const response = await axiosRequest.post('/admin/poster/add', formData);
+            const response = await axiosRequest.post('/poster/admin/add', formData, config);
             dispatch({
                 type: ADD_POSTERS_SUCCESS,
                 payload: response.data,
@@ -64,7 +71,7 @@ export const deletePoster = (posterId) => {
     return async (dispatch) => {
         dispatch({ type: DELETE_POSTERS_REQUEST, payload: posterId });
         try {
-            await axiosRequest.delete(`/admin/poster/delete/${posterId}`, {
+            await axiosRequest.delete(`/poster/admin/delete/${posterId}`, {
                 headers: {
                     Authorization: `Bearer ${Cookies.get('21sqft')}`,
                 },

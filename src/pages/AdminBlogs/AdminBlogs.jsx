@@ -9,7 +9,8 @@ import AdminSidebar from "../../components/AdminSidebar/AdminSidebar.jsx";
 import { toast } from "react-toastify";
 import { addBlog, deleteBlog, editBlog, getBlogs } from "../../redux/actions/blogAction";
 import { BLOG_IMAGE_URL } from "../../services/helper.js";
-import { MdAddToPhotos } from "react-icons/md";
+import { MdAddToPhotos, MdClose, MdOutlineClose } from "react-icons/md";
+import { editComment, getComments } from "../../redux/actions/commentAction.js";
 // import EditIcon from '@mui/icons-material/Edit';
 // import AddToPhotosIcon from '@mui/icons-material/AddToPhotos';
 
@@ -25,10 +26,12 @@ const AdminBlogs = () => {
     const [expandedItems, setExpandedItems] = useState({}); // State to track expanded items
     const [existingImage, setExistingImage] = useState(null);
 
+    const [viewCommentsModalOpen, setViewCommentsModalOpen] = useState(false);
 
     const dispatch = useDispatch();
     const { blogs, loading, error, addLoading, deleteLoading } = useSelector((state) => state.blogReducer) || {};
     //     const { posters, loading, error, addLoading, deleteLoading } = useSelector(state => state.posterReducer) || {};
+    const { comments } = useSelector((state) => state.commentReducer) || {};
 
 
     useEffect(() => {
@@ -128,6 +131,37 @@ const AdminBlogs = () => {
             console.error("Error deleting blog:", error);
         }
     };
+
+
+    // Handle open/close view comments modal
+    const handleViewComments = (blog) => {
+        dispatch(getComments(blog._id));
+        setViewCommentsModalOpen(true);
+    };
+
+    const handleEditComment = async (comment, newStatus) => {
+        if (!comment?._id || !newStatus) {
+            toast.error("Invalid request. Missing comment ID or status.");
+            return;
+        }
+
+        const updatedCommentData = {
+            // id: comment._id,
+            name: comment.name,
+            email: comment.email,
+            comment: comment.comment,
+            status: newStatus,
+        };
+
+        try {
+            await dispatch(editComment(comment._id, updatedCommentData));
+            // toast.success(`Comment ${newStatus} successfully.`);
+        } catch (error) {
+            toast.error(error?.message || "Failed to update comment status.");
+        }
+    };
+
+
 
     // Function to toggle the description expansion
     const toggleExpansion = (id) => {
@@ -245,6 +279,10 @@ const AdminBlogs = () => {
                                                     {/* <IconButton onClick={() => handleDeletePoster(blog._id)} color="error">
                                     <DeleteIcon />
                                 </IconButton> */}
+                                                    <IconButton color="#101010" onClick={() => handleViewComments(blog)}>
+                                                        {/* <EditIcon /> */}
+                                                        <span style={{ fontSize: "1rem" }}>Comments</span>
+                                                    </IconButton>
                                                     <IconButton color="#101010" onClick={() => handleEditClick(blog)}>
                                                         {/* <EditIcon /> */}
                                                         <span style={{ fontSize: "1rem" }}>Edit</span>
@@ -369,6 +407,88 @@ const AdminBlogs = () => {
                         <button className="primary-button" onClick={handleEditBlog} disabled={loading}>
                             {loading ? 'Saving...' : 'Save'}
                         </button>
+                    </div>
+                </DialogContent>
+            </Dialog>
+
+
+            {/* comments */}
+            <Dialog open={viewCommentsModalOpen}
+                onClose={() => {
+                    setViewCommentsModalOpen(false);
+                }}
+                fullWidth maxWidth="md"
+                PaperProps={{ style: { backgroundColor: '#F6F6F6', borderRadius: '20px' } }}>
+                <DialogContent>
+                    <div className="modal-form">
+                        <div className="blog-header">
+                            <h1 className="h1">Comments</h1>
+                            <IconButton
+                                color="#101010"
+                                onClick={() => setViewCommentsModalOpen(false)}
+                            >
+                                <MdClose />
+                            </IconButton>
+                        </div>
+                        {comments?.length > 0 ? (
+                            <Box
+                                sx={{
+                                    border: "1px solid #ccc",
+                                    borderRadius: "12px",
+                                    // overflow: "hidden",
+                                    overflowX: "auto",
+                                    width: "100%",
+                                }}
+                            >
+                                <Table>
+                                    <TableHead sx={{ backgroundColor: "#F0F0F0" }}>
+                                        <TableRow>
+                                            <TableCell sx={{ fontWeight: "700", color: '#101010', fontFamily: "Roboto", fontSize: '1.1rem' }}>Sr. no.</TableCell>
+                                            <TableCell sx={{ fontWeight: "700", color: '#101010', fontFamily: "Roboto", fontSize: '1.1rem' }}>Name</TableCell>
+                                            <TableCell sx={{ fontWeight: "700", color: '#101010', fontFamily: "Roboto", fontSize: '1.1rem' }}>Email</TableCell>
+                                            <TableCell sx={{ fontWeight: "700", color: '#101010', fontFamily: "Roboto", fontSize: '1.1rem' }}>Message</TableCell>
+                                            <TableCell sx={{ fontWeight: "700", color: '#101010', fontFamily: "Roboto", fontSize: '1.1rem' }}>Action</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {/* {comments?.map((comment, index) => ( */}
+                                        {comments
+                                            ?.filter(comment => comment?.status !== "deleted")
+                                            .map((comment, index) => (
+                                                <TableRow key={comment?._id}>
+                                                    <TableCell sx={{ fontWeight: "400", color: '#101010', fontFamily: "Roboto", fontSize: '1rem' }}>{index + 1}</TableCell>
+                                                    <TableCell sx={{ fontWeight: "400", color: '#101010', fontFamily: "Roboto", fontSize: '1rem' }}>{comment?.name}</TableCell>
+                                                    <TableCell sx={{ fontWeight: "400", color: '#101010', fontFamily: "Roboto", fontSize: '1rem' }}>{comment?.email}</TableCell>
+                                                    <TableCell sx={{ fontWeight: "400", color: '#101010', fontFamily: "Roboto", fontSize: '1rem' }}>{comment?.comment}</TableCell>
+                                                    <TableCell sx={{ fontWeight: "400", color: '#101010', fontFamily: "Roboto", fontSize: '1rem' }}>
+                                                        {comment?.status !== "approved" && (
+                                                            <IconButton
+                                                                color="#101010"
+                                                                onClick={() => handleEditComment(comment, "approved")}
+                                                            >
+                                                                <span style={{ fontSize: "1rem" }}>Approve</span>
+                                                            </IconButton>
+                                                        )}
+                                                        <IconButton
+                                                            color="#101010"
+                                                            onClick={() => handleEditComment(comment, "deleted")}
+                                                        >
+                                                            <span style={{ fontSize: "1rem" }}>Delete</span>
+                                                        </IconButton>
+
+                                                    </TableCell>
+                                                </TableRow>
+                                            ))}
+                                    </TableBody>
+                                </Table>
+                            </Box>
+                        ) : (
+                            <div className="not-found-cont">
+                                <h2 className="h2">No Comment Found.</h2>
+                            </div>
+                        )
+                        }
+
                     </div>
                 </DialogContent>
             </Dialog>

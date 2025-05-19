@@ -43,8 +43,15 @@ export const getBlogs = (id) => {
 export const addBlog = (formData) => {
     return async (dispatch) => {
         dispatch({ type: ADD_BLOG_REQUEST });
+        const token = Cookies.get('21sqft');
+        const config = {
+            headers: {
+                // "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
         try {
-            const response = await axiosRequest.post('/blog/add', formData);
+            const response = await axiosRequest.post('/blog/add', formData, config);
             dispatch({
                 type: ADD_BLOG_SUCCESS,
                 payload: response.data.blog,
@@ -86,8 +93,15 @@ export const addBlog = (formData) => {
 export const editBlog = (blogId, formData) => {
     return async (dispatch) => {
         dispatch({ type: EDIT_BLOG_REQUEST });
+        const token = Cookies.get('21sqft');
+        const config = {
+            headers: {
+                // "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
         try {
-            const response = await axiosRequest.put(`/blog/update/${blogId}`, formData);
+            const response = await axiosRequest.put(`/blog/update/${blogId}`, formData, config);
 
             dispatch({
                 type: EDIT_BLOG_SUCCESS,

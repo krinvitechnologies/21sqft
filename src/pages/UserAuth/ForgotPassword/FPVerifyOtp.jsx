@@ -50,7 +50,8 @@ function FPVerifyOtp() {
     return (
         <div className="forgot-password">
             <div className="left-ufp">
-                <img src="/image/div1.jpg" alt="img" />
+                {/* <img src="/image/div1.jpg" alt="img" /> */}
+                <img src="/assets/user_auth.webp" alt="user_auth" />
             </div>
             <div className="right-ufp">
                 <div className="right-top-ufp">

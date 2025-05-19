@@ -59,7 +59,8 @@ function Login() {
   return (
     <div className="user-login">
       <div className="left-ul">
-        <img src="/image/div1.jpg" alt="img" />
+        {/* <img src="/image/div1.jpg" alt="img" /> */}
+        <img src="/assets/user_auth.webp" alt="user_auth" />
       </div>
       <div className="right-ul">
         <div className="right-top-ul">

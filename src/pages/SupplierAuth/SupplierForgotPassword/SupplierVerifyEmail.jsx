@@ -53,7 +53,8 @@ function SupplierVerifyEmail() {
     return (
         <div className="forgot-password">
             <div className="left-ufp">
-            <img src='/image/div2.jpg' alt='img' />
+            {/* <img src='/image/div2.jpg' alt='img' /> */}
+            <img src="/assets/business_auth.webp" alt="business_auth" />
             </div>
             <div className="right-ufp">
                 <div className="right-top-ufp">

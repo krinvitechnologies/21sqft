@@ -95,9 +95,10 @@ export const getSupplier = () => {
     dispatch({ type: GET_SUPPLIER_REQUEST });
     try {
       const token = Cookies.get('21sqft'); // Get the token from cookies
-      // if (!token) {
-      //   throw new Error('Authentication token not found');
-      // }
+      if (!token) {
+        return;
+        // throw new Error('Authentication token not found');
+      }
 
       const response = await axiosRequest.get('/contractor/profile', {
         headers: {

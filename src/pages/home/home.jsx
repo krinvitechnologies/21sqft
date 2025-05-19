@@ -16,8 +16,8 @@ const Home = () => {
     return (
         <div className='home'>
             <Navbar />
-            {/* <PosterSlider /> */}
-            <Banner2 />
+            <PosterSlider />
+            {/* <Banner2 /> */}
             <Banner />
             <Explore />
             <BusinessSlider />

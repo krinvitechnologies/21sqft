@@ -87,14 +87,14 @@ const AdminSidebar = () => {
                                                 Business
                                             </button>
                                         </Link>
-                                        {/* <Link to="/admin/posters" className='hleftcard-link'>
+                                        <Link to="/admin/posters" className='hleftcard-link'>
                                             <button
                                                 className={`hdpro-text-list ${location.pathname === '/admin/posters' ? 'active' : ''
                                                     }`}
                                             >
                                                 Posters
                                             </button>
-                                        </Link> */}
+                                        </Link>
                                         <Link to="/admin/blogs" className='hleftcard-link'>
                                             <button
                                                 className={`hdpro-text-list ${location.pathname === '/admin/blogs' ? 'active' : ''

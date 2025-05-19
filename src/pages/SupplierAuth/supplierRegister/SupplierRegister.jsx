@@ -271,7 +271,8 @@ function SupplierRegister() {
   return (
     <div className='supplier-register'>
       <div className='left-sr'>
-        <img src='/image/div2.jpg' alt='img' />
+        {/* <img src='/image/div2.jpg' alt='img' /> */}
+        <img src="/assets/business_auth.webp" alt="business_auth" />
       </div>
       <div className='right-sr'>
         <div className="right-top-sr">

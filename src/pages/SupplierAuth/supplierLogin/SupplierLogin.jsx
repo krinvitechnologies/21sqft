@@ -62,7 +62,8 @@ function SupplierLogin() {
   return (
     <div className='supplier-login'>
       <div className='left-sl'>
-        <img src='/image/div2.jpg' alt='img' />
+        {/* <img src='/image/div2.jpg' alt='img' /> */}
+        <img src="/assets/business_auth.webp" alt="business_auth" />
       </div>
       <div className='right-sl'>
         <div className="right-top-sl">

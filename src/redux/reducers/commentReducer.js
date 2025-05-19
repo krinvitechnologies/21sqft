@@ -1,5 +1,4 @@
-import { ADD_COMMENT_FAILURE, ADD_COMMENT_REQUEST, ADD_COMMENT_SUCCESS, GET_COMMENTS_FAILURE, GET_COMMENTS_REQUEST, GET_COMMENTS_SUCCESS } from "../constants/commentConstant";
-
+import { ADD_COMMENT_FAILURE, ADD_COMMENT_REQUEST, ADD_COMMENT_SUCCESS, EDIT_COMMENT_FAILURE, EDIT_COMMENT_REQUEST, EDIT_COMMENT_SUCCESS, GET_COMMENTS_FAILURE, GET_COMMENTS_REQUEST, GET_COMMENTS_SUCCESS } from "../constants/commentConstant";
 
 const initialState = {
     loading: false,
@@ -29,6 +28,27 @@ const commentReducer = (state = initialState, action) => {
             };
         case ADD_COMMENT_FAILURE:
             return { ...state, addLoading: false, error: action.payload };
+
+        case EDIT_COMMENT_REQUEST:
+            return { ...state, loading: true, success: false, error: null };
+
+        case EDIT_COMMENT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                success: true,
+                comments: state.comments.map(comment =>
+                    comment._id === action.payload._id ? action.payload : comment
+                ),
+            };
+
+        case EDIT_COMMENT_FAILURE:
+            return {
+                ...state,
+                loading: false,
+                error: action.payload,
+            };
+
 
         default:
             return state;

@@ -66,7 +66,8 @@ function Register() {
   return (
     <div className="user-register">
       <div className="left-ur">
-        <img src="/image/div1.jpg" alt="img" />
+        {/* <img src="/image/div1.jpg" alt="img" /> */}
+        <img src="/assets/user_auth.webp" alt="user_auth" />
       </div>
       <form className="right-ur">
         <div className="right-top-ur">
